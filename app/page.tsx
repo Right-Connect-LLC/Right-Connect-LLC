@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -6,6 +8,7 @@ import { ArrowRight, Bot, Brain, MessageSquare, Search, Zap, CheckCircle, Mail, 
 import Link from "next/link"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
+import { useRouter } from 'next/navigation'
 
 export default function HomePage() {
   const services = [
@@ -44,6 +47,8 @@ export default function HomePage() {
     "Cost-effective AI transformation",
   ]
 
+  const router = useRouter()
+
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       {/* Header */}
@@ -63,11 +68,11 @@ export default function HomePage() {
             Systems, Chatbots, and Advanced Search Technologies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white">
+            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => router.push('/services')}>
               Explore Our Services
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-slate-600 text-slate-700 hover:bg-slate-800 hover:text-white">
+            <Button size="lg" variant="outline" className="border-slate-600 text-slate-700 hover:bg-slate-800 hover:text-white" onClick={() => router.push('/contact')}>
               Schedule Consultation
             </Button>
           </div>
@@ -140,7 +145,7 @@ export default function HomePage() {
               <p className="text-slate-300 text-center mb-6">
                 Let's discuss how AI can transform your business operations and customer experience.
               </p>
-              <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" size="lg">
+              <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" size="lg" onClick={() => router.push('/contact')}>
                 Schedule Free Consultation
               </Button>
             </div>
@@ -169,7 +174,7 @@ export default function HomePage() {
               <CardContent className="p-6 text-center">
                 <Phone className="h-8 w-8 text-amber-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2 text-white">Call Us</h3>
-                <p className="text-slate-300">+1 (555) 123-4567</p>
+                <p className="text-slate-300">+1 (575) 244-2478</p>
               </CardContent>
             </Card>
 
