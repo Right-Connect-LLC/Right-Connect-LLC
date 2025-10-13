@@ -36,14 +36,14 @@ export default function AboutPage() {
       email: "sarah@rightconnectllc.com",
     },
     {
-      name: "Marcus Rodriguez",
+      name: "Muhammad Azlan Yahaya",
       role: "Senior AI Engineer",
-      image: "/placeholder.svg?height=300&width=300",
+      image: "/muhammad.png?height=300&width=300",
       bio: "Ex-Microsoft AI specialist with expertise in RAG systems and conversational AI. Led development of enterprise chatbot solutions for Fortune 500 companies.",
       expertise: ["RAG Systems", "Chatbots", "Azure AI", "Python"],
       linkedin: "#",
       github: "#",
-      email: "marcus@rightconnectllc.com",
+      email: "muhammadazlanyahaya@gmail.com",
     },
     {
       name: "Dr. Priya Patel",
