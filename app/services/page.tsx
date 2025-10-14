@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -23,8 +25,10 @@ import {
 import Link from "next/link"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
+import { useRouter } from 'next/navigation'
 
 export default function ServicesPage() {
+    const router = useRouter()
     const services = [
         {
             id: "ai-agent-builder",
@@ -379,12 +383,12 @@ export default function ServicesPage() {
                             Let's discuss which AI solution is right for your specific needs and goals.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white">
-                                Schedule Free Consultation
+                            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => router.push('/onboarding')}>
+                                Get Started
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Button>
-                            <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800">
-                                View Case Studies
+                            <Button size="lg" variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800" onClick={() => router.push('/contact')}>
+                                Contact Us
                             </Button>
                         </div>
                     </div>
