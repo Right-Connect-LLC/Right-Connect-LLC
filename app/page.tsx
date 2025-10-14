@@ -68,12 +68,12 @@ export default function HomePage() {
             Systems, Chatbots, and Advanced Search Technologies.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => router.push('/services')}>
-              Explore Our Services
+            <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => router.push('/onboarding')}>
+              Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-slate-600 text-slate-700 hover:bg-slate-800 hover:text-white" onClick={() => router.push('/contact')}>
-              Schedule Consultation
+            <Button size="lg" variant="outline" className="border-slate-600 text-slate-700 hover:bg-slate-800 hover:text-white" onClick={() => router.push('/services')}>
+              Explore Services
             </Button>
           </div>
         </div>
@@ -145,8 +145,8 @@ export default function HomePage() {
               <p className="text-slate-300 text-center mb-6">
                 Let's discuss how AI can transform your business operations and customer experience.
               </p>
-              <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" size="lg" onClick={() => router.push('/contact')}>
-                Schedule Free Consultation
+              <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" size="lg" onClick={() => router.push('/onboarding')}>
+                Get Started Now
               </Button>
             </div>
           </div>

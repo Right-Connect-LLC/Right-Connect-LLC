@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -22,8 +24,10 @@ import {
 import Link from "next/link"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
+import { useRouter } from 'next/navigation'
 
 export default function AboutPage() {
+  const router = useRouter()
   const teamMembers = [
     {
       name: "Dr. Sarah Chen",
@@ -336,11 +340,11 @@ export default function AboutPage() {
               Let's discuss how our expertise can help transform your business with AI.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white">
-                Schedule a Consultation
+              <Button size="lg" className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => router.push('/onboarding')}>
+                Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-slate-600 text-slate-700 hover:text-white hover:bg-slate-800">
+              <Button size="lg" variant="outline" className="border-slate-600 text-slate-700 hover:text-white hover:bg-slate-800" onClick={() => router.push('/services')}>
                 View Our Services
               </Button>
             </div>
