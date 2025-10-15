@@ -380,7 +380,7 @@ export default function OnboardingPage() {
                 <Button
                   onClick={prevStep}
                   variant="outline"
-                  className="border-slate-600 text-slate-300 hover:bg-slate-800"
+                  className="border-slate-600 text-slate-700 hover:bg-slate-800"
                   disabled={step === 1}
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
