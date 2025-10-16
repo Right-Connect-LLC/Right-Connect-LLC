@@ -21,14 +21,17 @@ import {
   Landmark,
   GraduationCap,
   Home,
-  Briefcase
+  Briefcase,
+  Loader2
 } from "lucide-react"
 import { useRouter } from 'next/navigation'
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { useToast } from "@/hooks/use-toast"
 
 export default function OnboardingPage() {
   const [step, setStep] = useState(1)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,6 +43,7 @@ export default function OnboardingPage() {
     timeline: ''
   })
   const router = useRouter()
+  const { toast } = useToast()
 
   const industries = [
     { value: 'healthcare', label: 'Healthcare', icon: <Heart className="h-5 w-5" /> },
@@ -103,11 +107,42 @@ export default function OnboardingPage() {
     if (step > 1) setStep(step - 1)
   }
 
-  const handleSubmit = () => {
-    // Here you would typically send this data to your backend
-    console.log('Form Data:', formData)
-    // Redirect to contact page or thank you page
-    router.push('/contact?source=onboarding')
+  const handleSubmit = async () => {
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/onboarding', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit onboarding data')
+      }
+
+      toast({
+        title: "Success!",
+        description: "Your information has been submitted successfully. We'll contact you within 24 hours.",
+      })
+
+      // Redirect to a thank you page or contact page
+      setTimeout(() => {
+        router.push('/contact?source=onboarding&success=true')
+      }, 1500)
+    } catch (error: any) {
+      toast({
+        title: "Submission Failed",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const isStepValid = () => {
@@ -400,9 +435,19 @@ export default function OnboardingPage() {
                   <Button
                     onClick={handleSubmit}
                     className="bg-amber-600 hover:bg-amber-700"
+                    disabled={isSubmitting}
                   >
-                    Complete Onboarding
-                    <CheckCircle className="ml-2 h-4 w-4" />
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Complete Onboarding
+                        <CheckCircle className="ml-2 h-4 w-4" />
+                      </>
+                    )}
                   </Button>
                 )}
               </div>
